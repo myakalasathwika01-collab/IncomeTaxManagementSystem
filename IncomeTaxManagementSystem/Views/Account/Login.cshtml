@@ -1,0 +1,65 @@
+@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row justify-content-center my-5">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow border-0">
+            <div class="card-header bg-dark text-white text-center py-4">
+                <h3 class="fw-bold mb-1 letter-spacing-1">INCOME TAX PORTAL</h3>
+                <p class="small text-white-50 mb-0">Sign in to your account</p>
+            </div>
+            <div class="card-body p-4">
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="bi bi-check-circle-fill me-2"></i>@TempData["SuccessMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                <form asp-action="Login" asp-controller="Account" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post" novalidate>
+                    @Html.AntiForgeryToken()
+
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="EmailOrPAN" class="form-label fw-semibold">Email / PAN</label>
+                        <input asp-for="EmailOrPAN" class="form-control form-control-lg" placeholder="Enter Email or PAN" autofocus />
+                        <span asp-validation-for="EmailOrPAN" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label fw-semibold">Password</label>
+                        <input asp-for="Password" class="form-control form-control-lg" type="password" placeholder="Enter Password" />
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input asp-for="RememberMe" class="form-check-input" />
+                        <label asp-for="RememberMe" class="form-check-label"></label>
+                    </div>
+
+                    <div class="d-grid gap-2 mb-3">
+                        <button type="submit" class="btn btn-primary btn-lg fw-bold">LOGIN</button>
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <div class="text-center">
+                        <p class="mb-0 text-muted">
+                            Don't have an account?
+                            <br />
+                            <a asp-action="Register" asp-controller="Account" class="btn btn-outline-secondary btn-sm mt-2 fw-semibold">REGISTER</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

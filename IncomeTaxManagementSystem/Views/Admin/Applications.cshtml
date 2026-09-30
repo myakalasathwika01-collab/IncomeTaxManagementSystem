@@ -1,0 +1,52 @@
+@model IEnumerable<Application>
+@{
+    ViewData["Title"] = "All Applications - Admin";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold mb-0">Tax Applications</h3>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to Admin Dashboard</a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            @if (!Model.Any())
+            {
+                <div class="p-4 text-center text-muted">
+                    <p class="mb-0">No tax applications submitted yet.</p>
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Id</th>
+                                <th>Application #</th>
+                                <th>Applicant</th>
+                                <th>Status</th>
+                                <th>Submitted Date</th>
+                                <th>Reviewed Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var app in Model)
+                            {
+                                <tr>
+                                    <td>@app.Id</td>
+                                    <td><code>@app.ApplicationNumber</code></td>
+                                    <td>@app.User?.FullName (@app.User?.PAN)</td>
+                                    <td><span class="badge bg-info">@app.Status</span></td>
+                                    <td>@(app.SubmittedDate?.ToString("yyyy-MM-dd") ?? "—")</td>
+                                    <td>@(app.ReviewedDate?.ToString("yyyy-MM-dd") ?? "—")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

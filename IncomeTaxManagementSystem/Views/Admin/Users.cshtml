@@ -1,0 +1,51 @@
+@model IEnumerable<User>
+@{
+    ViewData["Title"] = "All Users - Admin";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold mb-0">System Users</h3>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to Admin Dashboard</a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Full Name</th>
+                            <th>PAN</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Created Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>@user.Id</td>
+                                <td class="fw-semibold">@user.FullName</td>
+                                <td><code>@user.PAN</code></td>
+                                <td>@user.Email</td>
+                                <td>@user.Mobile</td>
+                                <td>
+                                    <span class="badge @(user.Role == "Admin" ? "bg-danger" : "bg-primary")">@user.Role</span>
+                                </td>
+                                <td>
+                                    <span class="badge @(user.Status == "Active" ? "bg-success" : "bg-secondary")">@user.Status</span>
+                                </td>
+                                <td>@user.CreatedDate.ToString("yyyy-MM-dd HH:mm")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

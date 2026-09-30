@@ -1,0 +1,52 @@
+@model User
+@{
+    ViewData["Title"] = "User Dashboard";
+}
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card bg-light border-0 shadow-sm p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="fw-bold mb-1">Welcome, @(Model?.FullName ?? User.Identity?.Name)!</h2>
+                        <p class="text-muted mb-0">PAN: <span class="badge bg-secondary">@(Model?.PAN ?? User.FindFirst("PAN")?.Value)</span> | Role: <span class="badge bg-info text-dark">User</span></p>
+                    </div>
+                    <div>
+                        <a asp-action="Profile" class="btn btn-outline-primary"><i class="bi bi-person me-1"></i>View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card border-0 shadow-sm text-center p-3">
+                <div class="card-body">
+                    <h5 class="text-muted">Account Status</h5>
+                    <h3 class="text-success fw-bold">@(Model?.Status ?? "Active")</h3>
+                    <p class="small text-muted mb-0">Member since @(Model?.CreatedDate.ToString("dd MMM yyyy") ?? DateTime.Now.ToString("dd MMM yyyy"))</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card border-0 shadow-sm text-center p-3">
+                <div class="card-body">
+                    <h5 class="text-muted">Tax Returns</h5>
+                    <h3 class="text-primary fw-bold">Draft / In Progress</h3>
+                    <p class="small text-muted mb-0">Phase 1 & 2 verified</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card border-0 shadow-sm text-center p-3">
+                <div class="card-body">
+                    <h5 class="text-muted">Registered Email</h5>
+                    <h5 class="text-truncate fw-bold">@(Model?.Email ?? User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value)</h5>
+                    <p class="small text-muted mb-0">Verified identity</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

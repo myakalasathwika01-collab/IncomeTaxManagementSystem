@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Access Denied";
+}
+
+<div class="row justify-content-center my-5">
+    <div class="col-md-6 text-center">
+        <div class="card shadow-sm border-0 py-5 px-4">
+            <div class="card-body">
+                <div class="text-danger mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-shield-x" viewBox="0 0 16 16">
+                        <path d="M5.354 5.646a.5.5 0 1 0-.708.708L7.293 9l-2.647 2.646a.5.5 0 0 0 .708.708L8 9.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 9l2.647-2.646a.5.5 0 0 0-.708-.708L8 8.293z"/>
+                        <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v5.5a9.5 9.5 0 0 1-8 9.5 9.5 9.5 0 0 1-8-9.5V3.5a.5.5 0 0 1 .5-.5h.89zM1 3.824v4.676a8.5 8.5 0 0 0 7 8.5 8.5 8.5 0 0 0 7-8.5V3.824l-6.5-2.955z"/>
+                    </svg>
+                </div>
+                <h2 class="text-danger fw-bold mb-3">Access Denied</h2>
+                <p class="lead text-muted mb-4">You do not have permission to access this page.</p>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Admin" asp-action="Index" class="btn btn-primary btn-lg px-4">Back to Dashboard</a>
+                }
+                else if (User.IsInRole("User"))
+                {
+                    <a asp-controller="User" asp-action="Index" class="btn btn-primary btn-lg px-4">Back to Dashboard</a>
+                }
+                else
+                {
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-lg px-4">Back to Dashboard</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

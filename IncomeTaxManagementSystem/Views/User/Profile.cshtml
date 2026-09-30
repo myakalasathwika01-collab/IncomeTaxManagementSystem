@@ -1,0 +1,49 @@
+@model User
+@{
+    ViewData["Title"] = "User Profile";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white py-3">
+                    <h4 class="mb-0"><i class="bi bi-person-badge me-2"></i>User Profile</h4>
+                </div>
+                <div class="card-body p-4">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Full Name</dt>
+                        <dd class="col-sm-8 fw-semibold">@Model.FullName</dd>
+
+                        <dt class="col-sm-4 text-muted">PAN Number</dt>
+                        <dd class="col-sm-8 fw-semibold"><span class="badge bg-secondary">@Model.PAN</span></dd>
+
+                        <dt class="col-sm-4 text-muted">Email Address</dt>
+                        <dd class="col-sm-8">@Model.Email</dd>
+
+                        <dt class="col-sm-4 text-muted">Mobile Number</dt>
+                        <dd class="col-sm-8">@Model.Mobile</dd>
+
+                        <dt class="col-sm-4 text-muted">Date of Birth</dt>
+                        <dd class="col-sm-8">@Model.DateOfBirth.ToString("dd MMM yyyy")</dd>
+
+                        <dt class="col-sm-4 text-muted">Residential Address</dt>
+                        <dd class="col-sm-8">@(string.IsNullOrWhiteSpace(Model.Address) ? "Not provided" : Model.Address)</dd>
+
+                        <dt class="col-sm-4 text-muted">Account Role</dt>
+                        <dd class="col-sm-8"><span class="badge bg-info text-dark">@Model.Role</span></dd>
+
+                        <dt class="col-sm-4 text-muted">Account Status</dt>
+                        <dd class="col-sm-8"><span class="badge bg-success">@Model.Status</span></dd>
+
+                        <dt class="col-sm-4 text-muted">Registration Date</dt>
+                        <dd class="col-sm-8">@Model.CreatedDate.ToString("f")</dd>
+                    </dl>
+                </div>
+                <div class="card-footer bg-light text-end py-3">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Back to Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
