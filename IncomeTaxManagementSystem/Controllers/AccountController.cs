@@ -108,7 +108,10 @@ namespace IncomeTaxManagementSystem.Controllers
 
             _logger.LogInformation("User {UserId} logged in successfully with role {Role}.", user.Id, user.Role);
 
-            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl) 
+                && returnUrl != "/" 
+                && !returnUrl.Equals("/Home", StringComparison.OrdinalIgnoreCase) 
+                && !returnUrl.Equals("/Home/Index", StringComparison.OrdinalIgnoreCase))
             {
                 return Redirect(returnUrl);
             }

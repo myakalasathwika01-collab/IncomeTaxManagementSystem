@@ -1,8 +1,15 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<script>
+    // Client-side fallback redirect to dashboard
+    window.location.replace('@(User.IsInRole("Admin") ? Url.Action("Index", "Admin") : Url.Action("Index", "User"))');
+</script>
+
+<div class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading Dashboard...</span>
+    </div>
+    <p class="text-muted mt-3">Redirecting to your dashboard...</p>
 </div>

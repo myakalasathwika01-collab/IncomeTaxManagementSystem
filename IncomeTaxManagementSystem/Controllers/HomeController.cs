@@ -15,7 +15,18 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        // If user is already authenticated, redirect directly to their dashboard
+        if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+            return RedirectToAction("Index", "User");
+        }
+
+        // If not authenticated, redirect to Login
+        return RedirectToAction("Login", "Account");
     }
 
     public IActionResult Privacy()

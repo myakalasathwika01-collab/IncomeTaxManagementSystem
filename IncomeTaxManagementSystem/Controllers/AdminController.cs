@@ -20,6 +20,7 @@ namespace IncomeTaxManagementSystem.Controllers
         {
             ViewBag.UserCount = await _context.Users.CountAsync();
             ViewBag.ApplicationCount = await _context.Applications.CountAsync();
+            ViewBag.DocumentCount = await _context.Documents.CountAsync();
             return View();
         }
 
@@ -33,6 +34,21 @@ namespace IncomeTaxManagementSystem.Controllers
         {
             var applications = await _context.Applications.Include(a => a.User).OrderByDescending(a => a.SubmittedDate).ToListAsync();
             return View(applications);
+        }
+
+        public async Task<IActionResult> Documents()
+        {
+            var documents = await _context.Documents.Include(d => d.User).OrderByDescending(d => d.UploadedDate).ToListAsync();
+            return View(documents);
+        }
+
+        public async Task<IActionResult> Reports()
+        {
+            ViewBag.TotalUsers = await _context.Users.CountAsync();
+            ViewBag.TotalApplications = await _context.Applications.CountAsync();
+            ViewBag.TotalDocuments = await _context.Documents.CountAsync();
+            ViewBag.TotalTaxRecords = await _context.TaxDetails.CountAsync();
+            return View();
         }
     }
 }

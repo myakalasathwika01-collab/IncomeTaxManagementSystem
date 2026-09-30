@@ -1,0 +1,72 @@
+@{
+    ViewData["Title"] = "Reports & Analytics - Admin";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-1">Reports & Analytics</h3>
+        <p class="text-muted mb-0 small">Overview of portal activity and tax filing metrics</p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i> Back to Admin Dashboard
+    </a>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card">
+            <div class="stat-card-header">
+                <span class="stat-card-title">TOTAL USERS</span>
+                <div class="stat-icon-badge stat-icon-primary">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+            </div>
+            <div>
+                <div class="stat-value text-primary">@ViewBag.TotalUsers</div>
+                <div class="stat-footer-text">Registered taxpayers</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card">
+            <div class="stat-card-header">
+                <span class="stat-card-title">APPLICATIONS</span>
+                <div class="stat-icon-badge stat-icon-success">
+                    <i class="bi bi-card-checklist"></i>
+                </div>
+            </div>
+            <div>
+                <div class="stat-value text-success">@ViewBag.TotalApplications</div>
+                <div class="stat-footer-text">Total filings initiated</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card">
+            <div class="stat-card-header">
+                <span class="stat-card-title">DOCUMENTS</span>
+                <div class="stat-icon-badge stat-icon-info">
+                    <i class="bi bi-folder2-open"></i>
+                </div>
+            </div>
+            <div>
+                <div class="stat-value text-info">@ViewBag.TotalDocuments</div>
+                <div class="stat-footer-text">Verified file attachments</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="stat-card">
+            <div class="stat-card-header">
+                <span class="stat-card-title">TAX ASSESSMENTS</span>
+                <div class="stat-icon-badge stat-icon-warning">
+                    <i class="bi bi-receipt"></i>
+                </div>
+            </div>
+            <div>
+                <div class="stat-value text-warning">@ViewBag.TotalTaxRecords</div>
+                <div class="stat-footer-text">Declared salary & TDS records</div>
+            </div>
+        </div>
+    </div>
+</div>

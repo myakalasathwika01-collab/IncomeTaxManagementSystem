@@ -1,0 +1,321 @@
+/* ==========================================================================
+   INCOME TAX MANAGEMENT SYSTEM - SIDEBAR STYLES
+   ========================================================================== */
+
+:root {
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 72px;
+    --sidebar-bg: #0f172a;           /* Deep corporate navy */
+    --sidebar-bg-hover: #1e293b;
+    --sidebar-border: #1e293b;
+    --sidebar-text: #94a3b8;
+    --sidebar-text-bright: #f8fafc;
+    --sidebar-active-bg: #1d4ed8;     /* Royal Sapphire Blue */
+    --sidebar-active-text: #ffffff;
+    --sidebar-accent: #3b82f6;
+    --topbar-height: 64px;
+}
+
+/* Sidebar Container */
+.app-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+    z-index: 1040;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+/* Brand Header */
+.sidebar-header {
+    height: var(--topbar-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    border-bottom: 1px solid var(--sidebar-border);
+    flex-shrink: 0;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--sidebar-text-bright);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.brand-icon-wrapper {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.15rem;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.35);
+    flex-shrink: 0;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+    transition: opacity 0.2s ease;
+}
+
+.brand-title {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+}
+
+.brand-subtitle {
+    font-size: 0.7rem;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+/* Sidebar Collapse Toggle Button inside header */
+.sidebar-toggle-pin {
+    background: transparent;
+    border: none;
+    color: var(--sidebar-text);
+    padding: 0.35rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sidebar-toggle-pin:hover {
+    color: var(--sidebar-text-bright);
+    background-color: var(--sidebar-bg-hover);
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem 0.75rem;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 5px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background-color: #334155;
+    border-radius: 4px;
+}
+
+.nav-section-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64748b;
+    padding: 0.75rem 0.75rem 0.35rem 0.75rem;
+    margin-top: 0.5rem;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-item {
+    margin-bottom: 0.25rem;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.65rem 0.85rem;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    position: relative;
+}
+
+.sidebar-link .menu-icon {
+    font-size: 1.15rem;
+    width: 22px;
+    text-align: center;
+    color: #94a3b8;
+    flex-shrink: 0;
+    transition: color 0.2s;
+}
+
+.sidebar-link:hover {
+    color: var(--sidebar-text-bright);
+    background-color: var(--sidebar-bg-hover);
+}
+
+.sidebar-link:hover .menu-icon {
+    color: #38bdf8;
+}
+
+/* Active Menu Item */
+.sidebar-item.active > .sidebar-link,
+.sidebar-link.active {
+    background: linear-gradient(90deg, #1d4ed8 0%, #2563eb 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+}
+
+.sidebar-item.active > .sidebar-link .menu-icon,
+.sidebar-link.active .menu-icon {
+    color: #ffffff;
+}
+
+.sidebar-link.active::before {
+    content: '';
+    position: absolute;
+    left: -0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60%;
+    width: 4px;
+    background-color: #60a5fa;
+    border-radius: 0 4px 4px 0;
+}
+
+/* Sidebar Footer (User info / Logout) */
+.sidebar-footer {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--sidebar-border);
+    background-color: rgba(15, 23, 42, 0.75);
+    flex-shrink: 0;
+}
+
+.sidebar-user-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    overflow: hidden;
+}
+
+.user-avatar-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.user-meta-info {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.2;
+}
+
+.user-meta-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--sidebar-text-bright);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-meta-role {
+    font-size: 0.7rem;
+    color: #94a3b8;
+}
+
+/* ==========================================================================
+   COLLAPSED SIDEBAR STATE (Desktop)
+   ========================================================================== */
+body.sidebar-collapsed .app-sidebar {
+    width: var(--sidebar-collapsed-width);
+}
+
+body.sidebar-collapsed .brand-text,
+body.sidebar-collapsed .nav-section-title,
+body.sidebar-collapsed .menu-title,
+body.sidebar-collapsed .user-meta-info,
+body.sidebar-collapsed .sidebar-toggle-pin {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+body.sidebar-collapsed .sidebar-header {
+    justify-content: center;
+    padding: 0;
+}
+
+body.sidebar-collapsed .sidebar-link {
+    justify-content: center;
+    padding: 0.75rem 0;
+}
+
+body.sidebar-collapsed .sidebar-footer {
+    padding: 0.75rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVE (Off-canvas)
+   ========================================================================== */
+@media (max-width: 991.98px) {
+    .app-sidebar {
+        transform: translateX(-100%);
+    }
+
+    body.mobile-sidebar-open .app-sidebar {
+        transform: translateX(0);
+    }
+
+    /* Mobile Backdrop Overlay */
+    .sidebar-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(2px);
+        z-index: 1035;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    body.mobile-sidebar-open .sidebar-backdrop {
+        opacity: 1;
+        visibility: visible;
+    }
+}

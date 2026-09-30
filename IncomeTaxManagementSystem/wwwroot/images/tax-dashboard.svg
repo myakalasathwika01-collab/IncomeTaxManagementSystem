@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="calcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#1e40af" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background Decorative Circles -->
+  <circle cx="200" cy="150" r="130" fill="url(#bgGrad)"/>
+  <circle cx="330" cy="80" r="40" fill="#3b82f6" opacity="0.06"/>
+  <circle cx="70" cy="220" r="50" fill="#10b981" opacity="0.06"/>
+
+  <!-- Main Tax Document (Back Card) -->
+  <g filter="url(#dropShadow)">
+    <rect x="90" y="40" width="180" height="230" rx="14" fill="url(#cardGrad)" stroke="#e2e8f0" stroke-width="2"/>
+    
+    <!-- Document Header Badge -->
+    <rect x="110" y="60" width="60" height="8" rx="4" fill="#3b82f6"/>
+    <rect x="110" y="74" width="90" height="6" rx="3" fill="#cbd5e1"/>
+    
+    <!-- Tax Filing Form Lines -->
+    <line x1="110" y1="95" x2="250" y2="95" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round"/>
+    <rect x="110" y="110" width="70" height="12" rx="3" fill="#f1f5f9"/>
+    <rect x="190" y="110" width="60" height="12" rx="3" fill="#e2e8f0"/>
+
+    <rect x="110" y="130" width="85" height="12" rx="3" fill="#f1f5f9"/>
+    <rect x="205" y="130" width="45" height="12" rx="3" fill="#e2e8f0"/>
+
+    <rect x="110" y="150" width="60" height="12" rx="3" fill="#f1f5f9"/>
+    <rect x="180" y="150" width="70" height="12" rx="3" fill="#e2e8f0"/>
+
+    <line x1="110" y1="175" x2="250" y2="175" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+    <!-- Total Tax Due Row -->
+    <rect x="110" y="190" width="50" height="10" rx="3" fill="#1e40af" opacity="0.8"/>
+    <rect x="175" y="188" width="75" height="14" rx="4" fill="url(#accentGrad)" opacity="0.2"/>
+    <text x="212" y="199" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">VERIFIED</text>
+    
+    <!-- Approved Stamp -->
+    <g transform="translate(190, 215)">
+      <circle cx="25" cy="25" r="22" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+      <path d="M16 26 l6 6 l13 -13" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- Digital Calculator (Front Floating Element) -->
+  <g filter="url(#dropShadow)" transform="translate(230, 110)">
+    <rect x="0" y="0" width="110" height="150" rx="14" fill="url(#calcGrad)"/>
+    
+    <!-- Calculator Screen -->
+    <rect x="12" y="14" width="86" height="32" rx="6" fill="#10b981" opacity="0.15"/>
+    <rect x="12" y="14" width="86" height="32" rx="6" fill="none" stroke="#10b981" stroke-width="1.5"/>
+    <text x="90" y="36" font-family="'Courier New', monospace" font-size="16" font-weight="bold" fill="#10b981" text-anchor="end">₹ 0.00</text>
+    
+    <!-- Calculator Keypad Grid -->
+    <!-- Row 1 -->
+    <rect x="14" y="56" width="18" height="16" rx="4" fill="#334155"/>
+    <rect x="36" y="56" width="18" height="16" rx="4" fill="#334155"/>
+    <rect x="58" y="56" width="18" height="16" rx="4" fill="#334155"/>
+    <rect x="80" y="56" width="16" height="16" rx="4" fill="#f59e0b"/>
+
+    <!-- Row 2 -->
+    <rect x="14" y="78" width="18" height="16" rx="4" fill="#334155"/>
+    <rect x="36" y="78" width="18" height="16" rx="4" fill="#334155"/>
+    <rect x="58" y="78" width="18" height="16" rx="4" fill="#334155"/>
+    <rect x="80" y="78" width="16" height="16" rx="4" fill="#3b82f6"/>
+
+    <!-- Row 3 -->
+    <rect x="14" y="100" width="18" height="16" rx="4" fill="#334155"/>
+    <rect x="36" y="100" width="18" height="16" rx="4" fill="#334155"/>
+    <rect x="58" y="100" width="18" height="16" rx="4" fill="#334155"/>
+    <rect x="80" y="100" width="16" height="16" rx="4" fill="#3b82f6"/>
+
+    <!-- Row 4 -->
+    <rect x="14" y="122" width="40" height="16" rx="4" fill="#334155"/>
+    <rect x="58" y="122" width="18" height="16" rx="4" fill="#334155"/>
+    <rect x="80" y="122" width="16" height="16" rx="4" fill="#10b981"/>
+  </g>
+
+  <!-- Left Security Shield Badge -->
+  <g filter="url(#softShadow)" transform="translate(45, 120)">
+    <circle cx="30" cy="30" r="28" fill="#ffffff"/>
+    <circle cx="30" cy="30" r="24" fill="url(#primaryGrad)"/>
+    <!-- Shield Icon -->
+    <path d="M30 18 L40 22 C40 32 30 38 30 38 C30 38 20 32 20 22 Z" fill="#ffffff" opacity="0.95"/>
+    <path d="M26 27 L29 30 L34 24" fill="none" stroke="#1e40af" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Floating Analytics Growth Bar -->
+  <g filter="url(#softShadow)" transform="translate(290, 45)">
+    <rect x="0" y="0" width="65" height="50" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+    <rect x="8" y="28" width="8" height="14" rx="2" fill="#93c5fd"/>
+    <rect x="20" y="20" width="8" height="22" rx="2" fill="#60a5fa"/>
+    <rect x="32" y="14" width="8" height="28" rx="2" fill="#3b82f6"/>
+    <rect x="44" y="8" width="8" height="34" rx="2" fill="#10b981"/>
+  </g>
+</svg>

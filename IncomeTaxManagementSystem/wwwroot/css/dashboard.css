@@ -1,0 +1,542 @@
+/* ==========================================================================
+   INCOME TAX MANAGEMENT SYSTEM - DASHBOARD & MAIN LAYOUT STYLES
+   ========================================================================== */
+
+:root {
+    --app-bg: #f8fafc;              /* Soft slate-50 */
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --primary-blue: #1d4ed8;
+    --accent-blue: #2563eb;
+    --success-green: #10b981;
+    --warning-amber: #f59e0b;
+    --danger-red: #ef4444;
+    --info-sky: #0284c7;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--app-bg);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   APPLICATION LAYOUT SHELL
+   ========================================================================== */
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.app-main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--app-bg);
+    min-width: 0;
+}
+
+body.sidebar-collapsed .app-main {
+    margin-left: var(--sidebar-collapsed-width);
+}
+
+@media (max-width: 991.98px) {
+    .app-main {
+        margin-left: 0 !important;
+    }
+}
+
+/* ==========================================================================
+   TOP HEADER BAR
+   ========================================================================== */
+.app-topbar {
+    height: var(--topbar-height);
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.topbar-toggle-btn {
+    background: transparent;
+    border: 1px solid #e2e8f0;
+    color: var(--text-secondary);
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1.15rem;
+}
+
+.topbar-toggle-btn:hover {
+    background-color: #f1f5f9;
+    color: var(--primary-blue);
+    border-color: #cbd5e1;
+}
+
+.page-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+.page-breadcrumb .current-page {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Notification Bell */
+.notification-btn {
+    position: relative;
+    background: transparent;
+    border: 1px solid #e2e8f0;
+    color: var(--text-secondary);
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+}
+
+.notification-btn:hover {
+    background-color: #f1f5f9;
+    color: var(--primary-blue);
+}
+
+.notification-badge-dot {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--danger-red);
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+/* User Profile Dropdown */
+.topbar-user-dropdown .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 0.35rem 0.65rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.2s;
+}
+
+.topbar-user-dropdown .dropdown-toggle:hover {
+    background-color: #f1f5f9;
+    border-color: #e2e8f0;
+}
+
+.topbar-user-dropdown .dropdown-toggle::after {
+    margin-left: 0.35rem;
+    color: var(--text-muted);
+}
+
+.avatar-circle-sm {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* Main Content Area */
+.app-content {
+    flex: 1;
+    padding: 1.75rem;
+}
+
+@media (max-width: 767.98px) {
+    .app-content {
+        padding: 1rem;
+    }
+}
+
+/* Footer */
+.app-footer {
+    background-color: #ffffff;
+    border-top: 1px solid var(--border-color);
+    padding: 1rem 1.5rem;
+    font-size: 0.825rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   DASHBOARD HERO BANNER (With SVG Visual)
+   ========================================================================== */
+.dashboard-hero-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3a8a 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 16px;
+    padding: 2rem 2.25rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
+}
+
+.dashboard-hero-card::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-welcome-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #93c5fd;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+}
+
+.hero-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    max-width: 580px;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+}
+
+.hero-meta-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.hero-meta-item {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.825rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.hero-visual-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 190px;
+}
+
+.hero-visual-wrapper img,
+.hero-visual-wrapper svg {
+    max-height: 180px;
+    width: auto;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+}
+
+/* ==========================================================================
+   METRIC / KPI STAT CARDS
+   ========================================================================== */
+.stat-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.4rem;
+    height: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.stat-card-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+}
+
+.stat-icon-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.stat-icon-primary {
+    background-color: #eff6ff;
+    color: var(--primary-blue);
+}
+
+.stat-icon-success {
+    background-color: #ecfdf5;
+    color: var(--success-green);
+}
+
+.stat-icon-warning {
+    background-color: #fffbeb;
+    color: var(--warning-amber);
+}
+
+.stat-icon-info {
+    background-color: #f0f9ff;
+    color: var(--info-sky);
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
+}
+
+.stat-footer-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   APPLICATION PROGRESS TRACKER
+   ========================================================================== */
+.progress-tracker-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.progress-tracker-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.progress-tracker-steps::before {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 40px;
+    right: 40px;
+    height: 3px;
+    background-color: #e2e8f0;
+    z-index: 1;
+}
+
+.tracker-step {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.tracker-step-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 3px solid #cbd5e1;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s;
+}
+
+.tracker-step.completed .tracker-step-circle {
+    background-color: var(--success-green);
+    border-color: var(--success-green);
+    color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+}
+
+.tracker-step.current .tracker-step-circle {
+    background-color: #ffffff;
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+.tracker-step-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.tracker-step.completed .tracker-step-label,
+.tracker-step.current .tracker-step-label {
+    color: var(--text-primary);
+}
+
+@media (max-width: 767.98px) {
+    .progress-tracker-steps {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+    }
+    .progress-tracker-steps::before {
+        top: 20px;
+        bottom: 20px;
+        left: 18px;
+        width: 3px;
+        height: auto;
+    }
+    .tracker-step {
+        flex-direction: row;
+        gap: 1rem;
+        text-align: left;
+    }
+}
+
+/* ==========================================================================
+   QUICK ACTIONS SECTION
+   ========================================================================== */
+.quick-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.15rem;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    transition: all 0.2s ease;
+}
+
+.quick-action-btn:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+    color: var(--primary-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.quick-action-btn .btn-icon {
+    font-size: 1.25rem;
+    color: var(--primary-blue);
+}
+
+/* ==========================================================================
+   SECTION CARDS (Tax Summary / Profile)
+   ========================================================================== */
+.section-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.section-card-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+}
+
+.section-card-header h5 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+}
+
+.section-card-body {
+    padding: 1.5rem;
+}

@@ -1,0 +1,58 @@
+@model IEnumerable<Application>
+@{
+    ViewData["Title"] = "Applications";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-1">My Tax Return Applications</h3>
+        <p class="text-muted mb-0 small">Track submission and review status of your filed returns</p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i> Back to Dashboard
+    </a>
+</div>
+
+<div class="section-card">
+    <div class="section-card-header">
+        <h5><i class="bi bi-card-checklist me-2 text-primary"></i>Submitted Returns</h5>
+    </div>
+    <div class="section-card-body p-0">
+        @if (Model != null && Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Application #</th>
+                            <th>Status</th>
+                            <th>Submitted Date</th>
+                            <th>Reviewed Date</th>
+                            <th>Admin Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var app in Model)
+                        {
+                            <tr>
+                                <td class="fw-bold text-primary font-monospace">@app.ApplicationNumber</td>
+                                <td><span class="badge bg-info">@app.Status</span></td>
+                                <td class="small text-muted">@(app.SubmittedDate?.ToString("dd MMM yyyy") ?? "Draft")</td>
+                                <td class="small text-muted">@(app.ReviewedDate?.ToString("dd MMM yyyy") ?? "—")</td>
+                                <td>@(string.IsNullOrWhiteSpace(app.AdminRemarks) ? "—" : app.AdminRemarks)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="text-center py-5">
+                <i class="bi bi-file-earmark-check text-muted" style="font-size: 3rem;"></i>
+                <h6 class="text-muted fw-semibold mt-3">No applications submitted yet.</h6>
+                <p class="small text-muted mb-0">Your return applications will appear here after filing.</p>
+            </div>
+        }
+    </div>
+</div>
